@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "name": "simple-https-server",
+  "version": "1.0.0",
+  "description": "A simple https server for local development.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raymond1/simple-https-server.git"
+  },
+  "keywords": [
+    "https",
+    "testing"
+  ],
+  "author": "Raymond Leon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raymond1/simple-https-server/issues"
+  },
+  "homepage": "https://github.com/raymond1/simple-https-server#readme"
+}
