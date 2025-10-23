@@ -36,10 +36,9 @@ https.createServer(options, (req, response) => {
   let content_type = 'text/plain'
   let response_code = 200
   try{
+    console.log(req.url)
+
     contents = fs.readFileSync('public' + req.url)
-
-
-    console.log(path_package.extname(req.url))
     if (path_package.extname(req.url) == '.html'){
       content_type = 'text/html'
     }else if (path_package.extname(req.url) == '.js'){
