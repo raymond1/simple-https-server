@@ -25,7 +25,8 @@ catch{
 
 const options = {
   key: fs.readFileSync(environmental_variables_json.key),
-  cert: fs.readFileSync(environmental_variables_json.cert)
+  cert: fs.readFileSync(environmental_variables_json.cert),
+  documentRoot: environmental_variables_json.documentRoot
 };
 
 
@@ -35,22 +36,25 @@ https.createServer(options, (req, response) => {
   let contents = ''
   let content_type = 'text/plain'
   let response_code = 200
+  let url = req.url
   try{
-    console.log(req.url)
+    console.log(url)
 
-    contents = fs.readFileSync('public' + req.url)
-    if (path_package.extname(req.url) == '.html'){
+    if (url == '/'){
+      url = '/index.html'
+    }
+    contents = fs.readFileSync(options.documentRoot + url)
+    if (path_package.extname(url) == '.html'){
       content_type = 'text/html'
-    }else if (path_package.extname(req.url) == '.js'){
+    }else if (path_package.extname(url) == '.js'){
       content_type = 'text/javascript'
-    }else if (path_package.extname(req.url) == '.css'){
+    }else if (path_package.extname(url) == '.css'){
       content_type = 'text/css'
     }
   }
   catch{
     response_code = 404
   }
-
   response.setHeader('Content-Type', content_type); 
 
   response.writeHead(response_code);
